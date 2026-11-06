@@ -16,4 +16,16 @@ Never merge a `docs/*` PR yourself; the human merges those.
 
 ## Commands
 
-None yet. Add build, test, single-test, coverage and iOS run commands once the workspace is scaffolded (M0).
+```sh
+cargo test --workspace                          # all tests
+cargo test -p flipwright-core <name>            # single test (by name filter)
+cargo clippy --workspace --all-targets -- -D warnings
+cargo fmt --all
+cargo llvm-cov -p flipwright-core --fail-under-lines 100   # core coverage gate
+scripts/check-engine-separability.sh            # engine builds and tests without FlipWright
+```
+
+Local coverage with Homebrew Rust (no rustup) needs Homebrew LLVM tools:
+`LLVM_COV=/opt/homebrew/opt/llvm/bin/llvm-cov LLVM_PROFDATA=/opt/homebrew/opt/llvm/bin/llvm-profdata cargo llvm-cov ...`
+
+CI (`.github/workflows/ci.yml`) runs the same checks on every PR. iOS build and run commands: added with the iOS host (M0).

@@ -1,0 +1,11 @@
+[package]
+name = "flipwright-e2e"
+edition.workspace = true
+publish.workspace = true
+
+[dependencies]
+flipwright-core = { path = "../core" }
+flipwright-game = { path = "../game" }
+
+[lints]
+workspace = true

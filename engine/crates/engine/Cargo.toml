@@ -1,0 +1,9 @@
+# Self-contained on purpose: no `workspace = true` inheritance, so the engine
+# builds unchanged outside this repository (architecture.md §7).
+[package]
+name = "engine"
+edition = "2024"
+publish = false
+
+[lints.clippy]
+all = { level = "deny", priority = -1 }
