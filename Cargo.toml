@@ -5,6 +5,7 @@ members = ["crates/*", "engine/crates/*"]
 [workspace.package]
 edition = "2024"
 publish = false
+license = "PolyForm-Noncommercial-1.0.0"
 
 [workspace.lints.rust]
 unsafe_code = "forbid"
