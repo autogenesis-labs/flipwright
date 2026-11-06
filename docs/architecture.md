@@ -77,7 +77,7 @@ Pinball physics lives in `core`, not in the engine: it is game-specific and must
 ### Key design rules
 
 - **Core is a deterministic simulation.** `core` advances in fixed 1/240 s steps from `(state, inputs) → state`. Rendering reads the state and interpolates; it never changes it.
-- **Seeded randomness only.** All randomness in `core` comes from a seeded RNG stored in the run state. This makes the Daily Contract, replays and tests reproducible.
+- **Seeded randomness only.** All randomness in `core` comes from a seeded RNG stored in the run state. This makes replays and tests reproducible.
 - **Platform code stays thin.** Platform shells only start the app and forward OS services (haptics, lifecycle, storage paths).
 
 ## 4. Testing (R8)
@@ -134,5 +134,4 @@ The engine lives in `engine/` from the start, so extracting it later is a mechan
 |---|---|
 | Building our own engine takes longer than expected | Scope is fixed to the list in §1. M0 is a physics sandbox on a real iPhone, so problems show up early. |
 | `winit`/`wgpu` iOS integration issues (lifecycle, safe areas, ProMotion) | Verify in M0 before any game features. Fall back to a thin Swift shell that owns the `CAMetalLayer` and display link and calls into Rust. |
-| Hybrid-casual SDKs (ads, analytics) are native only | Not needed for MVP. Later, bridge them through the platform shells. |
-| Floating-point results differ across platforms | Not required for MVP (see game-design.md §9). Revisit if cross-platform leaderboard validation is needed. |
+| Floating-point results differ across platforms | Not required (see game-design.md §9). |

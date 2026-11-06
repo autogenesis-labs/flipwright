@@ -10,6 +10,7 @@ Status: approved (see §12). Milestones are in [dev-plan.md](dev-plan.md). All n
 - **Session:** one contract takes about 8 to 10 minutes. One round takes about 1 to 2 minutes.
 - **Orientation:** portrait, single screen, no scrolling.
 - **Controls:** tap the left or right half of the screen to flip.
+- **Scope:** a public demo with general game features only (§13).
 
 ## 2. Differentiation (R2)
 
@@ -78,8 +79,6 @@ From bottom to top:
 - **Socket field**: **9 sockets** in a staggered 3-3-3 pattern in the upper two-thirds. Two sockets are adjacent if they are neighbours in the stagger, so each socket has up to 6 neighbours.
 - **Top lanes:** 3 rollover lanes. Lighting all 3 gives +1 Mult for the current ball. Flippers rotate the lit lanes (lane change).
 
-Later chassis (post-MVP) change the socket count and shape and add fixed features like an orbit loop or a ramp.
-
 ### 4.2 Scoring model
 
 `hit score = part points × Mult × Momentum bonus`
@@ -135,7 +134,7 @@ Mods are global and do not take a socket. A run can hold up to 5.
 ### 4.5 Draft pool and unlocks
 
 - New players start with 8 parts and 4 mods in the pool. The rest are unlocked with Blueprints.
-- Offers are drawn from a seeded RNG. The same seed always produces the same offers (needed for the Daily Contract and for tests).
+- Offers are drawn from a seeded RNG. The same seed always produces the same offers (needed for tests and replays).
 - The first offer of a contract always includes at least one bumper, so a new table can always score.
 
 ## 5. Meta progression
@@ -143,8 +142,7 @@ Mods are global and do not take a socket. A run can hold up to 5.
 - **Skyline:** 6 districts in the MVP. Each district is a client with 2 or 3 contracts and its own set of Inspection modifiers. Finishing a contract lights a block of windows. Finishing a district turns on its landmark (a code-drawn silhouette).
 - **Blueprints** (meta currency) are spent in the **Workshop Ledger** on:
   - unlocking parts and mods into the pool,
-  - workshop perks: +1 free reroll, start each contract with one placed Pop Bumper, +1 draft option (choose 1 of 4),
-  - the second chassis (post-MVP).
+  - workshop perks: +1 free reroll, start each contract with one placed Pop Bumper, +1 draft option (choose 1 of 4).
 - **Difficulty:** each new district raises the base quota by 15% and adds a harder Inspection set.
 
 ## 6. Retention features
@@ -154,14 +152,10 @@ Mods are global and do not take a socket. A run can hold up to 5.
 | Contract with escalating quotas | MVP | Short, complete session with a clear goal. |
 | Skyline progress | MVP | Visible long-term goal on the main screen. |
 | Always-some-reward on failure | MVP | A failed run still counts. |
-| Daily Contract (same seed for everyone, best score recorded) | MVP | Daily reason to return. Local streak counter. |
-| Machine snapshot (share an image of your finished table and score) | Post-MVP | Social sharing. |
-| Leaderboards (Game Center / Play Games) | Post-MVP | Competition on the Daily Contract. |
-| Additional chassis and districts | Post-MVP | Content updates. |
 
 Retention targets for evaluating playtests: D1 ≥ 40%, D7 ≥ 15%.
 
-**Monetization** is out of MVP scope (YAGNI). Planned hooks, so the design does not block them later: rewarded ad for one extra ball on fail, rewarded ad for a reroll, one-time purchase to remove ads, cosmetic ball and table skins.
+Monetization is out of scope (§13).
 
 ## 7. Feel and immersion (R3)
 
@@ -184,7 +178,7 @@ Immersion comes mostly from responsiveness and feedback, not from content:
 
 - **Style:** neon blueprint. Dark navy background with a faint grid. Parts are drawn as glowing vector shapes with additive bloom. Placed parts are bright; empty sockets are dashed blueprint outlines.
 - **Everything in the game is code-drawn:** table geometry, parts, particles, UI, fonts rendered from a bundled open-licence typeface, and the skyline.
-- **Generated images (R11)** only for assets outside the game rendering: app icon, store screenshots background, marketing key art. Prompts are written into `docs/image-prompts.md` when needed.
+- **Generated images (R11)** only where an image is truly needed outside the game rendering. Prompts are written into `docs/image-prompts.md` when needed. The app icon is code-drawn (§13).
 
 ## 9. Physics requirements
 
@@ -196,11 +190,11 @@ The physics must feel like real pinball, and it must be deterministic.
 - **Flippers:** kinematic rotating capsules with a fixed angular speed. The ball receives the flipper's surface velocity at the contact point, so "post passes", "cradles" and late flips work as in real pinball.
 - **Effective gravity:** tuned for the feel of a 6.5° table incline, then adjusted in playtests.
 - **Restitution and friction:** set per material (rubber, metal, plastic).
-- **Determinism:** same seed + same input timeline → identical results on the same build. This is required for tests, input replays, and the Daily Contract. Cross-platform bit-identical results are not required in the MVP.
+- **Determinism:** same seed + same input timeline → identical results on the same build. This is required for tests and input replays. Cross-platform bit-identical results are not required in the MVP.
 
 ## 10. Screens and flows
 
-1. **Skyline (home):** city skyline, Continue/Start Contract button, Daily Contract button, Ledger, Settings.
+1. **Skyline (home):** city skyline, Continue/Start Contract button, Ledger, Settings.
 2. **Contract intro:** client name, district, round count, preview of the Inspection modifier pool.
 3. **Round (gameplay):** quota bar, score, Mult, Momentum gauge, Overdrive meter, balls left, Cash Out (visible after the quota is reached), pause.
 4. **Workshop:** table view with sockets, 3 offer cards, reroll button, Scrap count, Next Inspection preview (before the last round), Start Round.
@@ -222,8 +216,7 @@ The physics must feel like real pinball, and it must be deterministic.
 2. Complete a full contract → result screen → district lights up on the skyline.
 3. Fail a contract → Blueprints awarded → spend them in the Ledger.
 4. Background the app mid-round → reopen → resume the same state.
-5. Daily Contract → play → best score and streak saved.
-6. Settings changes persist across restarts.
+5. Settings changes persist across restarts.
 
 ## 12. Review decisions (2026-11-06)
 
@@ -231,3 +224,19 @@ The physics must feel like real pinball, and it must be deterministic.
 2. Rounds: ball-based (2 balls per round), approved.
 3. Retention targets: D1 ≥ 40%, D7 ≥ 15%, approved.
 4. Monetization: out of MVP scope, approved.
+5. Project scope: public demo with general game features only (§13, R14).
+
+## 13. Scope (R14)
+
+This repository is a public demo: the complete playable game described in §1 to §11, with general game features only.
+
+Out of scope:
+
+- Ads, in-app purchases and cosmetic skins.
+- Analytics, crash reporting and remote config.
+- Online services: leaderboards, cloud save, sharing.
+- Daily Contract and streaks.
+- Store release: bundle ID, signing, privacy manifest, tracking consent, store listing and store images. The demo uses a code-drawn app icon and runs on development devices.
+- Content beyond §4 and §5, such as additional chassis and districts.
+
+No code, SDKs, keys, configuration, assets or hooks for out-of-scope features are added to this repository.

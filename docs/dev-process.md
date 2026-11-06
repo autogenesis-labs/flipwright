@@ -20,6 +20,7 @@ Because nobody reviews code, correctness comes from tests and CI.
 - **Engine separability (R13).** `engine/` never depends on code outside `engine/` and contains no FlipWright or pinball-specific code.
 - **Assets (R10, R11).** Draw assets in code. When an image is truly needed, write a GPT Image prompt in `docs/image-prompts.md` for the human to generate.
 - **English only (R12)** for code, comments, commits, PRs and documents.
+- **Scope (R14).** Nothing out of scope in game-design.md §13 is added to this repository. Outside pull requests are not accepted.
 - **Documents are human-approved.** Changes to anything in `docs/` are proposed in a `docs/*` PR, never merged by the AI.
 
 ## Branch strategy

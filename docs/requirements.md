@@ -23,6 +23,10 @@ Status: source of truth for product and process requirements. Changes require hu
 
 - **R13. Separable engine.** When development is complete, the in-house engine must be extractable into its own repository and usable without any FlipWright code.
 
+## Scope
+
+- **R14. Public demo.** This repository is a public demo project, licensed under PolyForm Noncommercial 1.0.0. It contains only general game features. Commercial and online-service features are out of scope (game-design.md §13).
+
 ## Assets
 
 - **R10. Code-drawn assets.** Draw as many assets as possible in code.
