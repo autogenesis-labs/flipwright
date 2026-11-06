@@ -4,6 +4,7 @@
 name = "engine"
 edition = "2024"
 publish = false
+license = "PolyForm-Noncommercial-1.0.0"
 
 [lints.clippy]
 all = { level = "deny", priority = -1 }
