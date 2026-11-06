@@ -37,3 +37,4 @@ Status: source of truth for product and process requirements. Changes require hu
 - [Game design](game-design.md)
 - [Architecture](architecture.md)
 - [Development plan](dev-plan.md)
+- [Development process](dev-process.md)

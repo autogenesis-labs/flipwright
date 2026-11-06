@@ -2,7 +2,7 @@
 
 Status: approved scope (milestones from the approved game design). Detailed tasks inside a milestone may change; changes to milestone scope or exit criteria need human review.
 
-Development is iterative (R7). Each milestone ends with a playable iOS build that the human reviews before the next milestone starts. Only what the current milestone needs is built (R9).
+Development is iterative (R7). Each milestone ends with a playable iOS build that the human reviews before the next milestone starts. Only what the current milestone needs is built (R9). Rules and branch strategy are in [dev-process.md](dev-process.md).
 
 Every milestone must also meet the standing exit criteria:
 
