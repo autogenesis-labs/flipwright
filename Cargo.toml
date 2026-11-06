@@ -1,0 +1,13 @@
+[workspace]
+resolver = "3"
+members = ["crates/*", "engine/crates/*"]
+
+[workspace.package]
+edition = "2024"
+publish = false
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+
+[workspace.lints.clippy]
+all = { level = "deny", priority = -1 }
