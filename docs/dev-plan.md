@@ -2,6 +2,8 @@
 
 Status: approved scope (milestones from the approved game design). Detailed tasks inside a milestone may change; changes to milestone scope or exit criteria need human review.
 
+The plan covers the scope in game-design.md §13 (R14).
+
 Development is iterative (R7). Each milestone ends with a playable iOS build that the human reviews before the next milestone starts. Only what the current milestone needs is built (R9). Rules and branch strategy are in [dev-process.md](dev-process.md).
 
 Every milestone must also meet the standing exit criteria:
@@ -64,15 +66,14 @@ Exit criteria: end-to-end tests for game-design.md §11 flows 1 to 4.
 
 ## M4: Feel and retention
 
-Goal: immersion and daily return.
+Goal: immersion.
 
 - Haptics through the engine's iOS bridge.
 - Procedural audio, musical Momentum scoring, music layers.
 - Overdrive, particles, hit flashes, capped camera shake, slow-motion.
-- Daily Contract with local streak.
 - Settings (haptics, reduce motion, volumes).
 
-Exit criteria: end-to-end tests for game-design.md §11 flows 5 and 6; on-device UI smoke test (XCUITest) for all main flows; performance targets still met with all effects on.
+Exit criteria: end-to-end tests for game-design.md §11 flow 5; on-device UI smoke test (XCUITest) for all main flows; performance targets still met with all effects on.
 
 ## M5: Android and Web
 

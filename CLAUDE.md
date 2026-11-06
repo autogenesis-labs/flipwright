@@ -4,6 +4,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 FlipWright: a hybrid-casual pinball game with roguelite table-building. iOS first, then Android and Web. Rust with an in-house engine.
 
+This repository is a public demo (R14). Never add anything listed as out of scope in game-design.md §13.
+
 ## Read first
 
 - `docs/requirements.md`: requirements R1–R13. Source of truth.
